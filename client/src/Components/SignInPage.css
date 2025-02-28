@@ -1,0 +1,89 @@
+/* body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+} */
+
+.signin-contain {
+    display: flex; /* Enable flexbox */
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  position: fixed; /* Ensure it stays centered even when scrolling */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center perfectly */
+  transition: opacity 0.5s ease;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px; /* Adjust as needed */
+  height: 300px;
+  z-index: 1000; /* Ensure it's on top of other content */
+  backdrop-filter: blur(5px);
+    /* justify-content: center;
+    align-items: center;
+    margin: 0;
+    display: flex; 
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    z-index: 1000; */
+}
+.signin-contain h2 {
+    text-align: center;
+    margin-bottom: 5px;
+}
+.signin-contain input[type="text"],
+.signin-contain input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.signbutton {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.signin-contain a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #007bff;
+}
+.close-btn {
+    /* position: absolute;
+    top: 10px; */
+    /* right: 10px; */
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #fff;
+    width: 10%;
+    position: absolute;
+    top: 10px; /* Distance from the top */
+    right: 10px;
+  }
+  
+  .close-btn:hover {
+    color: red;
+  }
