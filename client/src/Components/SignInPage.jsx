@@ -1,90 +1,86 @@
-//import React from 'react'
-
 import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import "./SignInPage.css";
 
 const SignInPage = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [isVisible, setIsVisible] = useState(true);
 
-  const handleSignIn = async (e) => {
-    e.preventDefault();
-    const loginForm = { email, password };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3000/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(loginForm),
-      });
-      const data = await response.json();
-      console.log(data);
+      const response = await fetch(
+        `${import.meta.env.VITE_SERVER_URL}/api/users/login`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        }
+      );
+      const result = await response.json();
+
+      if (response.ok && result.token) {
+        // Save the token to localStorage
+        localStorage.setItem("authToken", result.token);
+        alert("Login Successful!");
+        //setIsVisible(false);
+        navigate("/"); // Redirect to homepage or dashboard
+      } else {
+        setErrorMessage(
+          result.message || "Login failed. Please check your details."
+        );
+      }
     } catch (error) {
-      console.error(error);
+      console.error("Error during login:", error);
+      setErrorMessage("Error logging in. Please try again.");
     }
   };
 
   const closeSignInPage = () => {
-    setIsVisible(false); // Hide the sign-in form
+    setIsVisible(false);
   };
 
   return (
     <>
-      {isVisible && ( // Only render sign-in form if isVisible is true
+      {isVisible && (
         <div className="signin-contain">
           <button className="close-btn" onClick={closeSignInPage}>
             x
           </button>
           <h2>Welcome back!</h2>
           <h3>Sign In</h3>
-          <form onSubmit={handleSignIn}>
+
+          <form onSubmit={handleSubmit}>
             <input
-              type="text"
-              placeholder="Email or Username"
+              className="emailBox"
+              type="email"
+              placeholder="Email Address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
             <input
               type="password"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
             <button className="signbutton" type="submit">
               Sign In
             </button>
           </form>
+          {errorMessage && <p className="error">{errorMessage}</p>}
           <a href="#">Forgot Password?</a>
-          <a href="#">Sign Up</a>
+          <Link to="/register">Sign Up</Link>
         </div>
       )}
     </>
   );
 };
-
-//     <div className="signin-contain">
-//       <h2>Sign In</h2>
-//       <form onSubmit={handleSignIn}>
-//         <input
-//           type="text"
-//           placeholder="Email or Username"
-//           value={email}
-//           onChange={(e) => setEmail(e.target.value)}
-//         />
-
-//         <input
-//           type="password"
-//           placeholder="Password"
-//           value={password}
-//           onChange={(e) => setPassword(e.target.value)}
-//         />
-//         <button type="submit">Sign In</button>
-//       </form>
-//       <a href="#">Forgot Password?</a>
-//       <a href="#">Sign Up</a>
-//     </div>
-//   );
-// };
 
 export default SignInPage;

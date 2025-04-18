@@ -1,7 +1,73 @@
-.buyPage{
+/* .buyPage{
   
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  justify-content: center;
+  align-items: center; 
   background-color: rgb(233, 198, 198);
   justify-items: center;
+} */
+
+.buyPage {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease;
+  background: #fff;
+}
+
+.card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.buyPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(219, 239, 255);
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.card {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 280px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.card p {
+  margin: 0.5rem 0;
 }
