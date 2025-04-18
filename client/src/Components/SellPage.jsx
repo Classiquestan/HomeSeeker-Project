@@ -8,7 +8,7 @@ const SellPage = () => {
   const [formData, setFormData] = useState({
     address: "",
     city: "",
-    state: "", 
+    state: "",
     zip_code: "",
     price: "",
     beds: "",
@@ -242,7 +242,6 @@ const SellPage = () => {
           </div>
         </div>
 
-        {/* Description */}
         <label htmlFor="description">Description*</label>
         <textarea
           id="description"
@@ -253,7 +252,6 @@ const SellPage = () => {
           required
         ></textarea>
 
-        {/* Image Upload */}
         <label htmlFor="image">Property Image*</label>
         <input
           type="file"

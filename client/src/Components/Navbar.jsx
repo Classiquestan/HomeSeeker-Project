@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-// import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import homelogo from "../assets/homelogo1.jpg";
 import signlogo from "../assets/signinlogo1.png";
 import "./Navbar.css";

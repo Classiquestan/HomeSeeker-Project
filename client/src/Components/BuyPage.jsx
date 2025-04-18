@@ -43,7 +43,7 @@ const BuyPage = () => {
     <div className="buyPage">
       <h1>Homes for Sale</h1>
       {buyHomes.length === 0 ? (
-        <p>No homes for sale found at the moment.</p>
+        <p>No homes for sale found at the moment</p>
       ) : (
         <div className="cardContainer">
           {buyHomes.map((home) => (
